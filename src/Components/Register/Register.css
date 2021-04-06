@@ -1,0 +1,41 @@
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.register__logo {
+  object-fit: contain;
+  width: 200px;
+  margin: 20px auto;
+}
+
+.register__form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  padding: 20px;
+  height: fit-content;
+  border-radius: 5px;
+  border: 1px solid #d3d3d3;
+}
+
+.register__form h1 {
+  margin-bottom: 20px;
+}
+
+.register__form input {
+  height: 30px;
+  margin-bottom: 10px;
+  width: 98%;
+}
+
+.register__form h5 {
+  margin-bottom: 5px;
+}
+
+.register__registerButton {
+  width: 100%;
+  height: 30px;
+}
