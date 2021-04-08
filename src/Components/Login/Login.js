@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { login } from "../../services/user";
 
 import "./Login.css";
 
@@ -6,10 +9,18 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const dispatch = useDispatch();
+
   const signIn = (e) => {
     e.preventDefault();
 
-    alert("Sign In Success");
+    dispatch(login(username, password))
+      .then(() => {
+        alert("Sign In Success");
+      })
+      .catch(() => {
+        alert("Sign In Failed:");
+      });
   };
 
   return (

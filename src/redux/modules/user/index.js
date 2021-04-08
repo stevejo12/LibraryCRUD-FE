@@ -1,47 +1,28 @@
 import * as types from "./types";
 
-const initialState = {
-  loginUser: {
-    result: {},
-    error: null,
-    loading: false,
-    loaded: false,
-  },
-};
+const user = JSON.parse(localStorage.getItem("user"));
 
-const ACTION_HANDLERS = {
-  // login
-  [types.LOGIN_USER]: (state) => {
-    return {
-      ...state,
-      loginUser: {
-        ...state.loginUser,
-        error: null,
-        loading: true,
-        loaded: false,
-      },
-    };
-  },
-  [types.LOGIN_USER_SUCCESS]: (state, action) => {
-    return {
-      ...state,
-      loginUser: {
-        ...state.loginUser,
-        error: action.result ? action.result : {},
-        loading: false,
-        loaded: true,
-      },
-    };
-  },
-  [types.LOGIN_USER_FAILED]: (state, action) => {
-    return {
-      ...state,
-      loginUser: {
-        ...state.loginUser,
-        error: action.result ? action.result : {},
-        loading: false,
-        loaded: false,
-      },
-    };
-  },
-};
+const initialState = user
+  ? { isLoggedIn: true, user }
+  : { isLoggedIn: false, user: null };
+
+export default function (state = initialState, action) {
+  const { type, payload } = action;
+
+  switch (type) {
+    case types.LOGIN_USER_SUCCESS:
+      return {
+        ...state,
+        isLoggedIn: true,
+        user: payload.user,
+      };
+    case types.LOGIN_USER_FAILED:
+      return {
+        ...state,
+        isLoggedIn: false,
+        user: null,
+      };
+    default:
+      return state;
+  }
+}
