@@ -1,15 +1,35 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
+import { register } from "../../redux/action";
 
 import "./Register.css";
 
 function Register() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+
+  const message = useSelector((state) => state.message.message);
+
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const registerAccount = (e) => {
     e.preventDefault();
 
-    alert("Sign In Success");
+    dispatch(register(username, password, email))
+      .then(() => {
+        alert("Register Success");
+
+        history.push("/login");
+      })
+      .catch((err) => {
+        const text = message || "Register Failed";
+
+        alert(text);
+      });
   };
 
   return (
@@ -42,8 +62,8 @@ function Register() {
           <input
             className="register__email"
             type="email"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
           <button
             type="submit"

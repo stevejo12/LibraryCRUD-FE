@@ -17,11 +17,20 @@ const login = (username, password) => {
     });
 };
 
+const register = (username, password, email) => {
+  return axios.post(`${baseUrl}/register`, {
+    username,
+    password,
+    email,
+  });
+};
+
 const logout = () => {
   localStorage.removeItem("user");
 };
 
 export default {
   login,
+  register,
   logout,
 };

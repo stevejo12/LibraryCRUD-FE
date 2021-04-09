@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 import { login } from "../../redux/action";
@@ -10,6 +10,7 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const message = useSelector((state) => state.message.message);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -23,7 +24,8 @@ function Login() {
         history.push("/dashboard");
       })
       .catch(() => {
-        alert("Sign In Failed");
+        const text = message || "Sign In Failed";
+        alert(text);
       });
   };
 
