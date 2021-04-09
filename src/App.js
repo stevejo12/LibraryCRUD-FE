@@ -9,6 +9,7 @@ import store from "./redux/store";
 // import Component
 import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
+import Dashboard from "./Components/Dashboard/Dashboard";
 
 // import Styling
 import "./App.css";
@@ -21,6 +22,9 @@ function App() {
           <Switch>
             <Route path="/register">
               <Register />
+            </Route>
+            <Route path="/dashboard">
+              <Dashboard />
             </Route>
             <Route path="/">
               <Login />

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import { login } from "../../services/user";
 
@@ -9,7 +10,9 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const signIn = (e) => {
     e.preventDefault();
@@ -17,9 +20,11 @@ function Login() {
     dispatch(login(username, password))
       .then(() => {
         alert("Sign In Success");
+
+        history.push("/dashboard");
       })
       .catch(() => {
-        alert("Sign In Failed:");
+        alert("Sign In Failed");
       });
   };
 

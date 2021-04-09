@@ -1,8 +1,6 @@
 import axios from "axios";
 
-const baseUrl = "http://localhost:8080";
-
-console.log("baseUrl: ", baseUrl);
+const baseUrl = process.env.REACT_APP_LOCAL_API || "http://localhost:8080";
 
 const login = (username, password) => {
   return axios
@@ -11,8 +9,8 @@ const login = (username, password) => {
       password,
     })
     .then((res) => {
-      if (res.data.token) {
-        localStorage.setItem("user", JSON.stringify(res.data));
+      if (res.data.result.token) {
+        localStorage.setItem("user", JSON.stringify(res.data.result.token));
       }
 
       return res.data;
