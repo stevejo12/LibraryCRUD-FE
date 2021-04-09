@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { login } from "../../services/user";
+import { login } from "../../redux/action";
 
 import "./Login.css";
 
@@ -10,7 +10,6 @@ function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
   const history = useHistory();
 
