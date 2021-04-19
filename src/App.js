@@ -10,6 +10,7 @@ import store from "./redux/store";
 import Login from "./Components/Login/Login";
 import Register from "./Components/Register/Register";
 import Dashboard from "./Components/Dashboard/Dashboard";
+import Header from "./Components/Header/Header";
 
 // import Styling
 import "./App.css";
@@ -20,6 +21,9 @@ function App() {
       <Router>
         <div className="app">
           <Switch>
+            <Route path="/header">
+              <Header />
+            </Route>
             <Route path="/register">
               <Register />
             </Route>
