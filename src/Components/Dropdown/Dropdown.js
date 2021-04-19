@@ -5,7 +5,6 @@ import map from "lodash/map";
 import "./Dropdown.css";
 
 function Dropdown(props) {
-  console.log("here: ", props);
   return (
     <div className="dropdown">
       {/* for future create a sandwich tripple straight line when the page is small */}
@@ -15,7 +14,7 @@ function Dropdown(props) {
       <div className="dropdown__content">
         {map(props.data.extensionData, (data, key) => {
           return (
-            <Link to={data.link} className="dropdown__link">
+            <Link key={key} to={data.link} className="dropdown__link">
               {data.name}
             </Link>
           );
