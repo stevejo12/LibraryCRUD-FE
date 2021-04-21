@@ -1,5 +1,44 @@
-.header__links {
+.header {
   background-color: #001c71;
+  color: white;
+}
+
+.header__top {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.header__top > a {
+  padding: 0 32px 0 0.5rem;
+}
+
+.header__topMenu {
+  border-left: 1px solid #2f468b;
+  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+}
+
+.header__topMenu a {
+  text-decoration: none;
+  color: inherit;
+  padding: 20px;
+}
+
+.header__topMenu:hover {
+  background-color: #005cb9;
+}
+
+.header img {
+  width: auto;
+  height: 60px;
+}
+
+.header__links {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #2f468b;
 }

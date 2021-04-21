@@ -1,6 +1,7 @@
 .dropdown {
   background-color: inherit;
   display: inline-block;
+  font-size: 16px;
 }
 
 .dropdown__button {
@@ -9,6 +10,8 @@
   border: none;
   color: white;
   padding: 16px;
+  cursor: pointer;
+  font-size: inherit;
 }
 
 .dropdown__button:hover {
